@@ -1,0 +1,27 @@
+{
+  "Omelette": {
+    "Eggs": 3,
+    "Milk": 20
+  },
+  "Cake": {
+    "Flour": 520,
+    "Butter": 200,
+    "Vanilin": 2,
+    "Eggs": 3,
+    "Sugar": 200,
+    "Soda": 5,
+    "Vinegar": 5,
+    "Jam": 200
+  },
+  "Easter cake": {
+    "Milk": 190,
+    "Flour": 400,
+    "Butter": 75,
+    "Eggs": 3,
+    "Sugar": 110,
+    "Yeast": 5,
+    "Vanilla sugar": 3,
+    "Salt": 1,
+    "Raisins": 100
+  }
+}
