@@ -1,0 +1,9 @@
+object network access{{pool}}.cws.sco.cisco.com-nat
+host {{ingress}}
+exit
+object network egress{{pool}}.cws.sco.cisco.com
+host {{egress}}
+exit
+
+route outside {{ingress}} 255.255.255.255 127.0.0.1 1
+route outside {{egress}} 255.255.255.255 127.0.0.1 1

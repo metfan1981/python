@@ -1,0 +1,2 @@
+object network ctr.access{{pool}}.cws.sco.cisco.com-nat
+host {{ctr_ingress}}

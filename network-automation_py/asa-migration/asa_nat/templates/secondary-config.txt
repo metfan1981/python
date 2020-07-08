@@ -1,0 +1,6 @@
+object network access{{pool}}.cws.sco.cisco.com-nat
+host {{ingress}}
+exit
+object network egress{{pool}}.cws.sco.cisco.com
+host {{egress}}
+exit

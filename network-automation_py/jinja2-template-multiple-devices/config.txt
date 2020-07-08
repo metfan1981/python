@@ -1,0 +1,10 @@
+!
+interface Loopback1
+ description OSPF_{{hostname}}
+ ip address {{loopback}} 255.255.255.255
+!
+router ospf 1
+ router-id {{loopback}}
+ auto-cost reference-bandwidth 1000
+ network {{loopback}} 0.0.0.0 area 0
+ network 192.168.198.0 0.0.0.255 area 0

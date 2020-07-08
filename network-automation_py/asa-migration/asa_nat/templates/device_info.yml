@@ -1,0 +1,32 @@
+pairs_count:
+    chi2: 3
+    dal1: 2
+    fra2: 2
+    lon5: 3
+    lrk1: 3
+    mia2: 2
+    scs2: 3
+    sjl1: 2
+    syd3: 2
+    wdc1: 3
+    cop2: 1
+    hkg3: 1
+    joh2: 1
+    mum1: 1
+    par2: 1
+    sao2: 1
+    sin4: 1
+    tok2: 1
+    tor1: 1
+    test: 3
+
+mngt:
+    - cop2
+    - hkg3
+    - joh2
+    - mum1
+    - par2
+    - sao2
+    - sin4
+    - tok2
+    - tor1
