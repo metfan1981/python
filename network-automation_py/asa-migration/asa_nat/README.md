@@ -1,7 +1,9 @@
 #### Description
+
 Used to move object config on firewalls between different pools.
-Implemented action by action specified in **./task/task.yml**
-Saves backup of config to **./backups** if config push was executed.
+
+* Implemented action by action specified in **./task/task.yml**
+* Saves backup of config to **./backups** if config push was executed.
 
 
 #### Usage
