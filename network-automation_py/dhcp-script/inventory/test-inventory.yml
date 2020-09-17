@@ -1,0 +1,18 @@
+---
+
+irb:
+  src_intf: "irb.400"
+  devices:
+    - pdx1-c8u54-acc
+
+ge-400:
+  src_intf: "ge-0/2/1.400"
+  devices:
+    - pdx1-a7u27-acc
+
+ge-0:
+  src_intf: "ge-0/2/1.0"
+  devices:
+    - pdx1-a1u56-acc
+
+...

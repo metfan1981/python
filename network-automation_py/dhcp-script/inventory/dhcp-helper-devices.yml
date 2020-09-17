@@ -1,0 +1,64 @@
+---
+
+irb:
+  src_intf: "irb.400"
+  devices:
+    - pdx1-c8u54-acc
+    - pdx1-b3u56-bak
+    - pdx1-a15u56-acc
+    - pdx1-b10u56-acc
+    - pdx1-b11u56-acc
+    - pdx1-b12u54-acc
+    - pdx1-b12u56-acc
+    - pdx1-b13u56-acc
+    - pdx1-b14u56-acc
+    - pdx1-b15u56-acc
+    - pdx1-b5u56-acc
+    - pdx1-b6u56-acc
+    - pdx1-b9u56-acc
+    - pdx1-c10u56-acc
+    - pdx1-c11u56-acc
+    - pdx1-c12u56-acc
+    - pdx1-c13u56-acc
+    - pdx1-c14u56-acc
+    - pdx1-c15u56-acc
+    - pdx1-c1u56-acc
+    - pdx1-c2u56-acc
+    - pdx1-c3u54-acc
+    - pdx1-c3u56-acc
+    - pdx1-c4u56-acc
+    - pdx1-c5u56-acc
+    - pdx1-c6u56-acc
+    - pdx1-c8u56-acc
+    - pdx1-c9u56-acc
+    - pdx1-c7u56-acc
+  
+
+ge-400:
+  src_intf: "ge-0/2/1.400"
+  devices:
+    - pdx1-a7u27-acc
+    - pdx1-a13u27-acc
+    - pdx1-a14u27-acc
+    - pdx1-a14u56-acc
+    - pdx1-a7u56-acc
+    - pdx1-a8u27-acc
+  
+
+ge-0:
+  src_intf: "ge-0/2/1.0"
+  devices:
+    - pdx1-a1u56-acc
+    - pdx1-a3u27-acc
+    - pdx1-a3u56-acc
+    - pdx1-a4u27-acc
+    - pdx1-a6u27-acc
+    - pdx1-a6u56-acc
+    - pdx1-a15u27-acc
+    - pdx1-a2u27-acc
+    - pdx1-a2u56-acc
+    - pdx1-a5u27-acc
+    - pdx1-a5u56-acc
+    - pdx1-a4u56-acc
+  
+...
