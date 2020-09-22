@@ -23,24 +23,24 @@ with open("/home/netops/migration_ASA_NAT/consistency_check/device_info.yml") as
     device_info = yaml.safe_load(y)
 
 switches = [
-    f"sw-core-01-{dc}-scansafe.{dc}.sco.cisco.com",
-    f"sw-core-02-{dc}-scansafe.{dc}.sco.cisco.com"
+    f"sw-core-01-{dc}-scansafe.{dc}",
+    f"sw-core-02-{dc}-scansafe.{dc}"
 ]
 
 
 def fw_pairs_count():
     if device_info["pairs_count"][dc] == 1:
-        fw_list = [f"fw-brd-01-{dc}-scansafe.{dc}.sco.cisco.com"]
+        fw_list = [f"fw-brd-01-{dc}-scansafe.{dc}"]
     elif device_info["pairs_count"][dc] == 2:
         fw_list = [
-            f"fw-brd-01-{dc}-scansafe.{dc}.sco.cisco.com",
-            f"fw-brd-03-{dc}-scansafe.{dc}.sco.cisco.com"
+            f"fw-brd-01-{dc}-scansafe.{dc}",
+            f"fw-brd-03-{dc}-scansafe.{dc}"
         ]
     elif device_info["pairs_count"][dc] == 3:
         fw_list = [
-            f"fw-brd-01-{dc}-scansafe.{dc}.sco.cisco.com",
-            f"fw-brd-03-{dc}-scansafe.{dc}.sco.cisco.com",
-            f"fw-brd-05-{dc}-scansafe.{dc}.sco.cisco.com"
+            f"fw-brd-01-{dc}-scansafe.{dc}",
+            f"fw-brd-03-{dc}-scansafe.{dc}",
+            f"fw-brd-05-{dc}-scansafe.{dc}"
         ]
     return fw_list
 
@@ -58,7 +58,7 @@ def sw_check(host):
     }
     ssh = ConnectHandler(**device)
     print(Fore.YELLOW + f"Checking {host}..")
-    raw_objects = ssh.send_command(f"show object-group {dc}-cws-rpool-{pool}")
+    raw_objects = ssh.send_command(f"show object-group {dc}-rpool-{pool}")
     objects_list = []
     for line in raw_objects.split("\n"):
         if "host" in line:
