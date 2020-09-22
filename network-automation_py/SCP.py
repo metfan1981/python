@@ -17,17 +17,17 @@ scp = SCPClient(ssh.get_transport())
 # to UPLOAD FILE from this PC to remote device
 # ("from where" "to where"):
 # on Windows it is '\\' used when on linux is '/' for paths
-scp.put("C:\\Users\\dkorotk\\Desktop\\test.txt", "/home/pfne/scp_test/test.txt")
+scp.put("C:\\Users\\test.txt", "/home/pfne/scp_test/test.txt")
 
 
 # to UPLOAD Directory from this PC to remote device
 # 'recursive' means copy all the content of this directory
 # WARNING! it can overwrite files inside of directory
-scp.put("C:\\Users\\dkorotk\\PycharmProjects\\Giraffe\\venv\\den", recursive=True, remote_path="/home/pfne/")
+scp.put("C:\\Users\\venv", recursive=True, remote_path="/home/pfne/")
 
 
 # to DOWNLOAD FILE from remote device to this PC
-scp.get("/home/pfne/scp_test/test-from-VM.txt", "C:\\Users\\dkorotk\\Desktop\\")
+scp.get("/home/pfne/scp_test.txt", "C:\\Users\\")
 
 
 # always close connection at end
