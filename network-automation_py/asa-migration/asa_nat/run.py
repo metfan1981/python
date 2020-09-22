@@ -25,17 +25,17 @@ password = getpass()
 def fw_pairs_count(dict_arg):
     dc = dict_arg['dst_dc']
     if device_info["pairs_count"][dc] == 1:
-        pairs = [f"fw-brd-01-{dc}-scansafe.{dc}.sco.cisco.com"]
+        pairs = [f"fw-brd-01-{dc}-scansafe.{dc}"]
     elif device_info["pairs_count"][dc] == 2:
         pairs = [
-            f"fw-brd-01-{dc}-scansafe.{dc}.sco.cisco.com",
-            f"fw-brd-03-{dc}-scansafe.{dc}.sco.cisco.com"
+            f"fw-brd-01-{dc}-scansafe.{dc}",
+            f"fw-brd-03-{dc}-scansafe.{dc}"
         ]
     elif device_info["pairs_count"][dc] == 3:
         pairs = [
-            f"fw-brd-01-{dc}-scansafe.{dc}.sco.cisco.com",
-            f"fw-brd-03-{dc}-scansafe.{dc}.sco.cisco.com",
-            f"fw-brd-05-{dc}-scansafe.{dc}.sco.cisco.com"
+            f"fw-brd-01-{dc}-scansafe.{dc}",
+            f"fw-brd-03-{dc}-scansafe.{dc}",
+            f"fw-brd-05-{dc}-scansafe.{dc}"
         ]
     return pairs
 
@@ -71,8 +71,8 @@ main_cfg, ctr_cfg = {}, {}
 def pull_cfg(dict_arg, *args):
     dc = dict_arg['src_dc']
     pool = dict_arg['src_pool']
-    tun_asa = f"fw-brd-01-{dc}-tunnelling.{dc}.sco.cisco.com"
-    ss_asa = f"fw-brd-01-{dc}-scansafe.{dc}.sco.cisco.com"
+    tun_asa = f"fw-brd-01-{dc}-tunnelling.{dc}"
+    ss_asa = f"fw-brd-01-{dc}-scansafe.{dc}"
     device = {
         "device_type": "cisco_asa",
         "username": username,
@@ -85,21 +85,21 @@ def pull_cfg(dict_arg, *args):
         device.update({"ip": tun_asa})
         ssh = ConnectHandler(**device)
         ssh.enable()
-        ctr = ssh.send_command(f"show run object id ctr.access{pool}.cws.sco.cisco.com-nat")
+        ctr = ssh.send_command(f"show run object id ctr.access{pool}-nat")
         ctr_cfg.update({f"{pool}_ctr": ip_builder(ctr)})
     else:
         device.update({"ip": ss_asa})
         ssh = ConnectHandler(**device)
         ssh.enable()
-        access = ssh.send_command(f"show run object id access{pool}.cws.sco.cisco.com-nat")
-        egress = ssh.send_command_expect(f"show run object id egress{pool}.cws.sco.cisco.com")
+        access = ssh.send_command(f"show run object id access{pool}-nat")
+        egress = ssh.send_command_expect(f"show run object id egress{pool}")
         main_cfg.update({f"{pool}_access": ip_builder(access)})
         main_cfg.update({f"{pool}_egress": ip_builder(egress)})
     ssh.disconnect()
 
 
 def cfg_builder(dict_arg, *args):
-    tun_asa = f"fw-brd-01-{dict_arg['dst_dc']}-tunnelling.{dict_arg['dst_dc']}.sco.cisco.com"
+    tun_asa = f"fw-brd-01-{dict_arg['dst_dc']}-tunnelling.{dict_arg['dst_dc']}"
     dst_pool = dict_arg['dst_pool']
     src_pool = dict_arg['src_pool']
     if args:
@@ -129,7 +129,7 @@ def cfg_builder(dict_arg, *args):
 def main(dict_arg, *args):
     dst_pool = dict_arg['dst_pool']
     src_pool = dict_arg['src_pool']
-    tun_asa = f"fw-brd-01-{dict_arg['dst_dc']}-tunnelling.{dict_arg['dst_dc']}.sco.cisco.com"
+    tun_asa = f"fw-brd-01-{dict_arg['dst_dc']}-tunnelling.{dict_arg['dst_dc']}"
     device = {
         "device_type": "cisco_asa",
         "username": username,
@@ -142,7 +142,7 @@ def main(dict_arg, *args):
         device.update({"ip": tun_asa})
         ssh = ConnectHandler(**device)
         ssh.enable()
-        ctr = ssh.send_command(f"show run object id ctr.access{dst_pool}.cws.sco.cisco.com-nat")
+        ctr = ssh.send_command(f"show run object id ctr.access{dst_pool}-nat")
         if "ERROR" in ctr:
             ctr = f"\n*** No preconfigured object\n        for CTR Pool {dst_pool} ***\n"
         with open("./templates/ctr-config.txt") as f:
@@ -160,8 +160,8 @@ def main(dict_arg, *args):
             device.update({"ip": pair})
             ssh = ConnectHandler(**device)
             ssh.enable()
-            access = ssh.send_command(f"show run object id access{dst_pool}.cws.sco.cisco.com-nat")
-            egress = ssh.send_command_expect(f"show run object id egress{dst_pool}.cws.sco.cisco.com")
+            access = ssh.send_command(f"show run object id access{dst_pool}-nat")
+            egress = ssh.send_command_expect(f"show run object id egress{dst_pool}")
             if "ERROR" in access:
                 access = f"\n*** No preconfigured access object\n         for Pool {dst_pool} ***\n"
             if "ERROR" in egress:
