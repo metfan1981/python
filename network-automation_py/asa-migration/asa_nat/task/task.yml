@@ -1,22 +1,22 @@
 # Actions list, separated by '-'
   # src_dc: FROM which DC config being PULLED
-    # e.g for object 'access902.cws.sco.cisco.com-nat' POOL ID is '902'
+    # e.g for object 'access902-nat' POOL ID is '902'
   # src_pool: FROM which POOL config being PULLED
   # dst_dc: TO which DC config being PUSHED
   # dst_pool: TO which POOL config being PUSHED
   # primary pair: which fw pair will be primary at dst_dc: <1-3>
   # ctr_enabled: if src_dc has CTR on this pool: < yes/no >
 
-- src_dc: scs2
+- src_dc: sgp1
   src_pool: 203
-  dst_dc: wdc1
+  dst_dc: vrg2
   dst_pool: 610
   primary_pair: 2
   ctr_enabled: yes
 
-- src_dc: cop2
+- src_dc: ldn2
   src_pool: 1106
-  dst_dc: sin4
+  dst_dc: brn1
   dst_pool: 1512
   primary_pair: 1
   ctr_enabled: no
